@@ -61,9 +61,25 @@ Which 5-minute interval, on average across all the days in the dataset, contains
 ```r
 maxNumStepsInAInterval       <- max( dfActivity.perinterval$steps )
 maxNumStepsInAInterval.index <- match( maxNumStepsInAInterval, dfActivity.perinterval$steps)
-tmpi<-dfActivity.perinterval[maxNumStepsInAInterval.index,]$interval
+tmpi<-dfActivity.perinterval[maxNumStepsInAInterval.index,]
 ```
-Interval `tmpi` on average has the higest numbr of steps.
+The following interval  on average has the higest numbr of steps.
+
+```r
+tmpi$interval
+```
+
+```
+## [1] 835
+```
+
+```r
+tmpi$steps
+```
+
+```
+## [1] 206.1698
+```
 
 
 
@@ -95,7 +111,7 @@ dfActivity.NAFixed.perday <- aggregate( steps~date, data = dfActivity.NAfixed ,F
 hist(dfActivity.NAFixed.perday$steps , breaks = 50 )
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-7-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-8-1.png) 
 Mean and median total number of steps taken per day on the naFixed dataset:
 
 ```r
@@ -246,7 +262,9 @@ xyplot( steps~interval|daytype,
         )
 ```
 
-![](./PA1_template_files/figure-html/unnamed-chunk-11-1.png) 
+![](./PA1_template_files/figure-html/unnamed-chunk-12-1.png) 
 
-
-
+* At both tails (1 to 500 and 2000 to 2400), weekends and weekdays are similar: little activity during sleep/rest
+* At 500 to 1000, there is much greater activity during weekdays
+* At 1000 to 1500, there is slightly greater activity during weekdays
+* At 1500 to 2000, there is greater activity during weekdays
